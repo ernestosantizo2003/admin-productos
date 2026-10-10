@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn-login").addEventListener("click", login);
   document.getElementById("btn-logout").addEventListener("click", logout);
   document.getElementById("btn-guardar").addEventListener("click", guardarProducto);
-  if (localStorage.getItem("sesion") === "activa") {
-    document.getElementById("login").classList.add("oculto");
-    document.getElementById("admin").classList.remove("oculto");
-  }
+  // if (localStorage.getItem("sesion") === "activa") {
+  //   document.getElementById("login").classList.add("oculto");
+  //   document.getElementById("admin").classList.remove("oculto");
+  // }
   cargarProductos();
 });
 
@@ -99,7 +99,7 @@ function render() {
     tr.innerHTML =
       '<td class="col-nombre">' + p.nombre + "</td>" +
       "<td>Q" + p.precio + "</td>" +
-      "<td>" + (agotado ? '<span class="agotado">Agotado</span>' : p.stock) + "</td>" +
+      "<td>" + (agotado ? '<span class="agotado">Sin stock</span>' : p.stock) + "</td>" +
       '<td><button class="btn-editar">Editar</button> ' +
       '<button class="btn-eliminar">Eliminar</button></td>';
     tr.querySelector(".btn-editar").addEventListener("click", () => editar(p.id));
