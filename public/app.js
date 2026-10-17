@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn-login").addEventListener("click", login);
   document.getElementById("btn-logout").addEventListener("click", logout);
   document.getElementById("btn-guardar").addEventListener("click", guardarProducto);
-  // if (localStorage.getItem("sesion") === "activa") {
-  //   document.getElementById("login").classList.add("oculto");
-  //   document.getElementById("admin").classList.remove("oculto");
-  // }
+  if (localStorage.getItem("sesion") === "activa") {
+    document.getElementById("login").classList.add("oculto");
+    document.getElementById("admin").classList.remove("oculto");
+  }
   cargarProductos();
 });
 
@@ -18,11 +18,11 @@ function login() {
   const c = document.getElementById("clave").value.trim();
   const msg = document.getElementById("login-msg");
 
-  if (u === "admin" && c === "1234") {           // login de demostracion
+  if (u === "admin" && c === "1234") {
+    localStorage.setItem("sesion", "activa"); // solo si la clave es correcta
     document.getElementById("login").classList.add("oculto");
     document.getElementById("admin").classList.remove("oculto");
     msg.textContent = "";
-    localStorage.setItem("sesion", "activa"); // recuerda que inicio sesion
     render();
   } else {
     msg.textContent = "Usuario o contrasena incorrectos.";
